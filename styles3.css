@@ -1,0 +1,544 @@
+* {
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: 'League Spartan', sans-serif;
+    background-color: #0e0e10;
+    color: #E1E1E1;
+    line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+    .flex-container {
+        flex-direction: column;
+    }
+
+    .skills-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+}
+
+h1 {
+    font-size: 70px;
+    line-height: 1.2;
+    font-family: 'Fira Code', monospace;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+}
+.hero-container h2{
+    margin: 10px 0 0;
+    font-weight: 100;
+    color:#a88881;
+}
+.hero-container h1, h3{
+    margin: 0px;
+    font-weight: 40;
+}
+
+.hero-section {
+    background-image: url("images/red-sky.jpg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+.profile {
+    width:250px;
+    height:250px;
+    border-radius: 50%;
+}
+.side-nav {
+    margin-top: 10px;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 10px 20px 10px 10px;
+}
+
+body.dark-mode {
+    background-color: #f0f0f0;
+    color: #121212;
+}
+body.dark-mode .hero-container{
+    color: #f0f0f0;
+}
+body.dark-mode .skills-container {
+    background-color: #b7b7b8;
+}
+
+body.dark-mode .box {
+    background-image: linear-gradient(#b6b6b6,#dbd8d8);
+}
+
+body.dark-mode .ins {
+    background-color: #bdbdbd;
+}
+  
+body.dark-mode .lightbox-details {
+    background-color: #e7e7e7;
+}
+.dark-mode .nav-icon {
+    background-color: #bbb;
+    color: #121212;
+}
+  
+.nav-icon {
+    height: 50px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: flex;
+    opacity: 0.5;
+    transition-duration: 100ms;
+    align-items: center; /* vertically center */
+    justify-content: center; /* horizontally center */
+}
+
+.nav-icon:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+.hero-container {
+    margin: 0 10% 5%;
+    padding: 50px 20px 40px 20px;
+}
+
+.about {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+    padding: 0 30px 30px;
+}
+
+.about-container {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+}
+
+.about-container h3 {
+    font-size: 30px;
+}
+
+/* Animation came from this tutorial: https://www.youtube.com/watch?v=Kf4BP-WLkVs */
+.night {
+    position: absolute;
+    width: 85%;
+    height: 50%;
+    z-index: 1;
+    transform: rotateZ(23deg);
+    pointer-events: none; /* lets clicks pass through */
+    overflow: hidden;
+}
+
+
+.star {
+    position: absolute;
+    height: 4px;
+    width: 100px;
+    background: linear-gradient(-45deg, #5F91FF, rgba(0, 0, 255, 0));
+    border-radius: 999px;
+    filter: drop-shadow(0 0 6px #699BFF);
+    animation: tail 3s ease-in-out infinite, falling 3s ease-in-out infinite;
+
+}
+
+@keyframes tail {
+    0%{
+        width: 0px;
+    }
+    30%{
+        width: 100px;
+    }
+    100%{
+        width: 0;
+    }
+}
+
+@keyframes falling {
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(300px);
+    }
+}
+
+.star::before, .star::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 2px);
+    right: 0;
+    height: 4px;
+    width: 30px;
+    background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #5F91FF, rgba(0, 0, 255, 0));
+    transform: translateX(50%) rotateZ(45deg);
+    animation: shining 3s ease-in-out infinite;
+}
+
+@keyframes shining {
+    0%{
+        width: 0px;
+    }
+    50%{
+        width: 30px;
+    }
+    100%{
+        width: 0px;
+    }
+}
+
+.star::after {
+    transform: translateX(50%) rotateZ(-45deg);
+}
+
+.star:nth-child(1){
+    top: calc(50% - 100px);
+    left: calc(50% - 250px);
+    animation-delay: 1s;
+}
+
+.star.star:nth-child(1)::before, .star:nth-child(1)::after {
+    animation-delay: 1s;
+}
+
+.star:nth-child(2){
+    top: calc(50% - 50px);
+    left: calc(50% - 200px);
+    animation-delay: 2s;
+}
+
+.star.star:nth-child(2)::before, .star:nth-child(2)::after {
+    animation-delay: 1s;
+}
+
+.about p, h3{
+    font-size: 20px;
+}
+
+.skills-container {
+    background-color: #242637;
+    display: grid;
+    grid-template-columns: 50% auto;
+    grid-template-rows: auto auto;
+    column-gap: 50px;
+    padding: 10px 30px;
+    margin: 10px auto;
+    overflow-x: hidden;
+}
+
+.lang {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.apps {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.box {
+    background-image: linear-gradient(#242637,#171722);
+    padding: 20px;
+    text-align: center;
+}
+
+.skill-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skill-info h3 {
+    font-size: 20px;
+    line-height: 40px;
+}
+
+.ins {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #202231;
+    border-radius: 10%;
+    width: 100%;
+    max-width: 125px;
+    min-width: 80px;
+    flex: 1 1 auto;
+    height: 125px;
+    margin: 10px;
+    text-align: center;
+    font-size: 25px;
+    transition-property: background-color, transform;
+    transition-timing-function: ease;
+}
+
+.ins h3{
+    line-height: 1.2;
+    
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+}
+
+.ins:is(:hover, :focus) {
+    transform: scale(1.1);
+    background-color: #60657c;
+    transition-duration: 350ms;
+}
+
+.sec-title {
+    padding: 0 10%;
+}
+
+.projects {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 500px;
+    height: auto;
+    gap: 50px
+}
+
+.pr-div {
+    width: 350px;
+    border-radius: 0.5rem;
+    transition: ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 5px 15px white;
+    position: relative;
+    overflow: hidden;
+    visibility: visible;
+}
+
+.pr-div:nth-of-type(1) {
+    background: url(images/Logo-name.png) no-repeat 50% / cover;
+}
+.pr-div:nth-of-type(2) {
+    background: url(images/Screenshot%202025-04-19%20165826.png) no-repeat 50% / cover;
+}
+.pr-div:nth-of-type(3) {
+    background: url(images/Screenshot%202025-04-19%20171627.png) no-repeat 50% / cover;
+}
+.pr-div:nth-of-type(4) {
+    background: url(images/project-img.jpeg) no-repeat 50% / cover;
+}
+
+.pr-div:hover {
+    box-shadow: 1px 3px 15px #346eff;
+    transform: translateY(-30px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.pr-div .project-block {
+    font-size: 1.5rem;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    opacity: 0;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    background: linear-gradient(
+        0deg,
+        rgba(2, 2, 46, 0.675) 0%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+    visibility: hidden;
+}
+
+.pr-div:hover .project-block {
+    opacity: 1;
+    transform: translateY(0%);
+    visibility: visible;
+}
+
+
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    display: none;
+    align-items: flex-start;
+    flex-direction: row;
+    z-index: 1000;
+}
+
+.lightbox-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img {
+    width: 80%;
+    max-height: 95%;
+    margin-bottom: 15px;
+}
+
+.p-links {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 50px;
+}
+
+.meta-link {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    transition-duration: 100ms;
+}
+
+.meta-link:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+.lightbox-details {
+    width: 50%;
+    height: 100%;
+    max-height: 100vh; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #0e0e10;
+    padding: 50px;
+}
+
+.lightbox-details h2{
+    line-height: 50px;
+}
+
+.role {
+    margin: 0;
+}
+
+.lightbox-title {
+    margin: 0;
+    font-size: 50px;
+}
+
+.lightbox-desc, .lightbox-role {
+    margin: 30px 0;
+    font-size: 20px;
+}
+
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+.contact-form {
+    margin: 10px 10%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    column-gap: 40px;;
+}
+
+.input-fields {
+    grid-row: 1 / span 2;
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contact-details {
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+.msg-field {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.message {
+    width: 100%;
+    height: 225px;
+    margin: 10px 0 0 0;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+input[type=submit] {
+    grid-row: 2;
+    grid-column: 2;
+    min-width: 80px;
+    width: 15%;
+    padding: 12px 20px;
+    cursor: pointer;
+    float: left;
+    background-color: greenyellow;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(124, 182, 38);
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+    margin: 50px;
+}
+
+.social-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition-duration: 100ms;
+}
+
+.social-icon:hover {
+    transform: scale(1.4);
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+}
